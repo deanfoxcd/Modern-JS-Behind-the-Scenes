@@ -73,6 +73,7 @@ function deleteCart() {
 }
   */
 
+/*
 // 'This' keyword always points to the owner of the function it's used in
 // Only assigned when function is called
 // Method: this --> Object calling the method
@@ -115,3 +116,68 @@ belle.calcAge();
 
 const f = dean.calcAge;
 f(); // this is undefined because there is no onwer, like the first calcAge function
+*/
+
+/*
+var firstName = 'belle';
+// Adding the above will cause the greet function to print 'Hey, belle' because it's
+// essentially saying window.firstName
+
+const dean = {
+  firstName: 'dean',
+  year: 1977,
+  calcAge: function () {
+    // The console.log will print the dean object. Only because that's the
+    // object calling the function, not because it's written here
+    console.log(this);
+    console.log(2037 - this.year);
+
+    // Solution 1
+    // const self = this; // saves 'this' outside of the regular function to be used in the function
+    // const isMellenial = function () {
+    //   //   console.log(this); // undefined becuase it's in a regular function
+    //   //   console.log(this.year >= 1981 && this.year <= 1996);
+    //   console.log(self); // dean object
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+    // };
+
+    // Solution 2
+    const isMellenial = () => {
+      console.log(this); // dean object. Arrow function uses parent scope 'this'
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+
+    isMellenial();
+  },
+  greet: () => {
+    console.log(this);
+    console.log(`Hey, ${this.firstName}`);
+  },
+  //   greet: function () {
+  //     console.log(this);
+  //     console.log(`Hey, ${this.firstName}`);
+  //   },
+};
+dean.greet();
+// When using arrow function this prints Hey, undefined. The surrounding function is the global scope. The
+// code inside an object literal is not block scoped. Greet is in the global
+// scope (window). So it's saying window.firstName which may sometimes be a
+// var somewhere else in the global scope in which case that will be printed
+// instead of undefined.
+// When using normal function it will work as intended and print Hey, dean
+dean.calcAge();
+
+// arguments keyword
+const addExpression = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+addExpression(2, 5);
+addExpression(2, 5, 8, 12);
+
+var addArrow = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+addArrow(3, 4);
+*/
