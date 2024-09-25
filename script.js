@@ -1,5 +1,7 @@
 'use strict';
 
+/* SCOPING
+
 function calcAge(birthYear) {
   const age = 2037 - birthYear;
 
@@ -35,3 +37,38 @@ function calcAge(birthYear) {
 
 const firstName = 'Dean';
 calcAge(1991);
+*/
+
+/* HOISTING
+
+// console.log(me); // Undefined
+// console.log(job); // ReferenceError. Job not initialized. Code breaks
+// console.log(year);
+
+var me = 'Dean';
+let job = 'Framer';
+const year = 1987;
+
+// console.log(addDeclaration(2, 3)); // Will print 5
+// console.log(addExpression(3, 4)); // ReferenceError. Variable not initialized. Code breaks
+// console.log(addArrow(4, 5)); // Cannot access 'addArrow' before initialization
+
+function addDeclaration(a, b) {
+  return a + b;
+}
+const addExpression = function (a, b) {
+  return a + b;
+};
+
+const addArrow = (a, b) => a + b;
+
+//Example
+
+// Code in function will still execute because 'products' is undefined which is falsey
+if (!products) deleteCart();
+var products = 10;
+
+function deleteCart() {
+  console.log('All products deleted');
+}
+  */
