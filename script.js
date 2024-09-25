@@ -181,3 +181,41 @@ var addArrow = (a, b) => {
 };
 addArrow(3, 4);
 */
+
+//Primitive Types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+
+console.log(lastName, oldLastName);
+
+// Reference Types
+const belle = {
+  firstName: 'Belle',
+  lastName: 'Fox',
+  age: 27,
+};
+
+const marriedBelle = belle; // Doesn't create a new memory address, just referneces the belle memory
+marriedBelle.lastName = 'Wilkie';
+console.log('Before: ', belle);
+console.log('After: ', marriedBelle);
+// Both of these will print Belle Wilkie because they're both pointing to the
+// same memory reference
+
+// Copying objects the right way
+const belle2 = {
+  firstName: 'Belle',
+  lastName: 'Fox',
+  age: 27,
+  family: ['dean', 'stacy', 'dan'],
+};
+
+const belleCopy = Object.assign({}, belle2); // Only works on first level (shallow copy)
+belleCopy.lastName = 'Wilkie';
+belleCopy.family.push('madi');
+belleCopy.family.push('aislynn');
+console.log(belle2);
+console.log(belleCopy);
+//The two objects will have the same array because the assign method only
+// works on the first level
